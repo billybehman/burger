@@ -2,19 +2,19 @@ var orm = require("../config/orm")
 
 var burger = {
     all: function(cb) {
-        orm.showAll("burgers,", function(results) {
+        orm.showAll("burgers", function(results) {
             cb(results)
         })
     },
 
-    new: function(name, eaten, cb) {
-        orm.create("burgers", {burger_name: name, devoured: eaten}, function(res) {
+    new: function(name, cb) {
+        orm.create("burgers", {burger_name: name}, function(res) {
             cb(res)
         })
     },
     
-    put: function(cb) {
-        orm.update("burgers", burger_name, id, function(res) {
+    put: function(burger_name, id, cb) {
+        orm.update("burgers", [burger_name, id], function(res) {
             cb(res)
         })
     }

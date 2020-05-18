@@ -5,23 +5,35 @@ var burger = require("../models/burger")
 var router = express.Router()
 
 router.get("/", function(req, res) {
-    burger.all(function(data) {
+    try {
+       burger.all(function(data) {
+        
+        
         var hbsobj = {
             burger: data
         }
+        console.log(hbsobj);
         res.render("index", hbsobj)
-    })
+    }) 
+    } catch (error) {
+        console.log(error)
+    }
+    
 })
 
 router.post("/api/burgers", function(req, res) {
-    burger.new(req.body.name, req.body.eaten, function(data) {
+     
+    console.log("req", req.body)
+
+
+    burger.new(req.body.name, function(data) {
         res.json(data)
     })
 })
 
 router.put("api/burgers/:id", function(req, res) {
-    burger.put(function() {
-
+    burger.put(req.body.name, req.body.id, function(data) {
+        res.json(data)
     })
 })
 

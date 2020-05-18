@@ -18,8 +18,8 @@ var orm = {
         })
     },
 
-    update: function(table, burger_name, id, cb) {
-        connection.query("UPDATE" + table + "SET ? WHERE id = ?", [burger_name, id], function(err, results) {
+    update: function(table, data, cb) {
+        connection.query("UPDATE" + table + "SET ? WHERE id = ?", data, function(err, results) {
             if(err) throw err
             cb(results)
         })
