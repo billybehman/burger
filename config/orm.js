@@ -12,14 +12,14 @@ var orm = {
     },
 
     create: function(table, data, cb) {
-        connection.query("INSERT INTO" + table + "SET ?", data, function(err, results) {
+        connection.query("INSERT INTO " + table + " SET ?", data, function(err, results) {
             if(err) throw err
             cb(results)
         })
     },
 
     update: function(table, data, cb) {
-        connection.query("UPDATE" + table + "SET ? WHERE id = ?", data, function(err, results) {
+        connection.query("UPDATE " + table + " SET ? WHERE id = ?", data, function(err, results) {
             if(err) throw err
             cb(results)
         })
